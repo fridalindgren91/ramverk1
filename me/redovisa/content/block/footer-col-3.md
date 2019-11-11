@@ -1,3 +1,3 @@
-#### Footer col 3
+#### Länkar
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Länkar som är viktiga för mig i denna kursen:

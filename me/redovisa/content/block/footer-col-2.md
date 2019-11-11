@@ -1,3 +1,3 @@
-#### Footer col 2
+#### Gitter
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Gitterchatten för denna kurs finns [här](https://gitter.im/dbwebb-se/ramverk1)

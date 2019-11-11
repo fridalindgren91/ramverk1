@@ -1,1 +1,1 @@
-Copyright år och ditt namn (Frida) samt diverse länkar som du finner relevanta.
+Copyright 2019 Frida Lindgren
