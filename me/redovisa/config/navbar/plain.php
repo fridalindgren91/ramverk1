@@ -33,5 +33,10 @@ return [
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
         ],
+        [
+            "text" => "IP validering",
+            "url" => "ip/page",
+            "title" => "IP adress validering.",
+        ],
     ],
 ];
