@@ -53,5 +53,10 @@ return [
             "url" => "ip/page",
             "title" => "IP adress validering.",
         ],
+        [
+            "text" => "IP geolocation",
+            "url" => "geo/page",
+            "title" => "Geografisk position för ip-adress.",
+        ],
     ],
 ];

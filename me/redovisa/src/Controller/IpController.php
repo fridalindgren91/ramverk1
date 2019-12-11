@@ -5,6 +5,8 @@ namespace Anax\Controller;
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 
+use Anax\models\ipAdress;
+
 // use Anax\Route\Exception\ForbiddenException;
 // use Anax\Route\Exception\NotFoundException;
 // use Anax\Route\Exception\InternalErrorException;
@@ -68,6 +70,10 @@ class IpController implements ContainerInjectableInterface
     public function pageActionGet() : object
     {
         $page = $this->di->get("page");
+
+        $ipModel = new ipAdress();
+        // $userIp = $ipModel->getUserIp($this->di->get("request"));
+
         $data = [
             "content" => "<h3>IP-adress validator</h3>",
             "contentJSON" => "<h3>IP-adress validator (JSON)",
@@ -83,25 +89,16 @@ class IpController implements ContainerInjectableInterface
 
     public function checkIPActionPost() : object
     {
-        $ip = $this->di->get("request")->getPost("ipadress");
-
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            $ipRes = $ip . " är en giltig IPv6 adress!";
-            $host = gethostbyaddr($ip);
-        } elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            $ipRes = $ip . " är en giltig IPv4 adress!";
-            $host = gethostbyaddr($ip);
-        } else {
-            $ipRes = $ip . " är inte en giltig IP adress";
-            $host = null;
-        }
+        $ipAdress = $this->di->get("request")->getPost("ipadress");
+        $ipModel = new ipAdress($ipAdress);
+        $valRes = $ipModel->validateIp();
 
         $page = $this->di->get("page");
         $data = [
             "content" => "<h3>IP-adress validator</h3>",
             "contentJSON" => "<h3>IP-adress validator (JSON)",
-            "result" => "<p>" . $ipRes . "</p>",
-            "host" => $host
+            "result" => "<p>" . $valRes[0] . "</p>",
+            "host" => $valRes[1]
         ];
 
         $title = "IP validator";
@@ -115,22 +112,13 @@ class IpController implements ContainerInjectableInterface
     public function checkIPJSONActionGet() : array
     {
         $ipJSON = $this->di->get("request")->getGet("ipadressJSON");
-
-        if (filter_var($ipJSON, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            $ipRes = $ipJSON . " är en giltig IPv6 adress!";
-            $hostJSON = gethostbyaddr($ipJSON);
-        } elseif (filter_var($ipJSON, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            $ipRes = $ipJSON . " är en giltig IPv4 adress!";
-            $hostJSON = gethostbyaddr($ipJSON);
-        } else {
-            $ipRes = $ipJSON . " är inte en giltig IP adress";
-            $hostJSON = null;
-        }
+        $ipModel = new ipAdress($ipJSON);
+        $valRes = $ipModel->validateIp();
 
         $json = [
             "ipAdress" => $ipJSON,
-            "ipRes" => $ipRes,
-            "hostJSON" => $hostJSON
+            "ipRes" => $valRes[0],
+            "hostJSON" => $valRes[1]
         ];
         return [$json];
     }

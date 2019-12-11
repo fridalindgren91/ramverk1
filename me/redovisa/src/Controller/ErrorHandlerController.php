@@ -27,6 +27,7 @@ class ErrorHandlerController implements ContainerInjectableInterface
      */
     public function catchAll(...$args) : object
     {
+        $args = $args;
         $title = " | Anax";
         $pages = [
             "403" => [
