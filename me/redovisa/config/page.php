@@ -23,6 +23,7 @@ return [
             ],
             "javascripts" => [
                 "js/responsive-menu.js",
+                "http://www.openlayers.org/api/OpenLayers.js",
             ],
         ],
     ],
