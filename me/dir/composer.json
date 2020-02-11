@@ -1,0 +1,16 @@
+{
+    "name" : "anax/noname",
+    "description": "Anax Flat, a scaffolded website for fun, development and real life",
+    "license": "MIT",
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {"Anax\\": "src/"}
+    },
+    "require": {
+        "anax/anax-flat": "^1.0.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}
