@@ -9,7 +9,7 @@
     },
     "require": {
         "anax/anax-ramverk1-me": "^1.0.0",
-        "fridalindgren91/ramverk1-module": "^3.0"
+        "fridalindgren91/ramverk1-module": "^5.0"
     },  
     "require-dev": {
         "phpunit/phpunit": "^7"
