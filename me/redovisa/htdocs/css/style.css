@@ -34,3 +34,7 @@
     border-radius: 20px;
     background-color: rgb(255, 0, 0);
 }
+
+.bookImg {
+    width: 200px;
+}
